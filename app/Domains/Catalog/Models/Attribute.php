@@ -34,8 +34,8 @@ class Attribute extends Model
         return $this->belongsTo(ProductTypeAttribute::class);
     }
 
-    public function attributegroup(): HasMany 
+    public function attributegroup(): BelongsTo 
     {
-        return $this->hasMany(AttributeGroup::class);
+        return $this->belongsTo(AttributeGroup::class);
     }
 }

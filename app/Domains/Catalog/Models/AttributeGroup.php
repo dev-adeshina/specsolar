@@ -3,7 +3,7 @@
 namespace App\Domains\Catalog\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AttributeGroup extends Model
 {
@@ -14,8 +14,8 @@ class AttributeGroup extends Model
         'name',
         'sort_order',
     ];
-    public function attribute(): BelongsTo 
+    public function attribute(): HasMany 
     {
-        return $this->belongsTo(Attribute::class);
+        return $this->hasMany(Attribute::class);
     }
 }

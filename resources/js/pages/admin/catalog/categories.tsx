@@ -309,7 +309,12 @@ export default function Categories() {
 
                                         <div className="grid gap-2">
                                             <Label htmlFor="image">Image</Label>
-                                            <ImageUpload  className="h-48 w-full" />
+                                            <ImageUpload 
+                                                name="image" 
+                                                required
+                                                accept=".jpg,.jpeg,.png,.webp"
+                                                className="h-48 w-full" 
+                                            />
                                             <InputError
                                                 message={errors.image}
                                                 className="mt-2"

@@ -5,19 +5,20 @@ import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input"
 
 
-
-interface ImageUploadProps {
-    onChange?: (file: File) => void;
+interface ImageUploadProps 
+    extends  React.InputHTMLAttributes<HTMLInputElement>{
     defaultImage?: string;
     className?: string;
+    onFileChange?: (file: File) => void;
 }
 
 
-
 function ImageUpload({
+    name,
     onChange,
-    className,
+    onFileChange,
     defaultImage,
+    ...props
 }: ImageUploadProps) {
     const inputRef = useRef<HTMLInputElement>(null);
     const [preview, setPreview] = useState(defaultImage);
@@ -33,25 +34,28 @@ function ImageUpload({
          if (!file) return;
 
         setPreview(URL.createObjectURL(file));
-        onChange?.(file);
+        onChange?.(e);
+        onFileChange?.(file);
     };
 
     return (
         <>
             <input
+                {...props}
                 ref={inputRef}
                 type="file"
-                accept="image/*"
+                accept={props.accept ?? "image/*"}
                 className="hidden"
-                name="image"
+                name={name}
                 onChange={handleChange}
+                
             />
 
             <div
                 onClick={handleClick}
                 className={cn(
                     "flex h-40 cursor-pointer items-center justify-center rounded-lg border-2 border-dashed transition hover:border-primary hover:bg-muted/40",
-                    className
+                    
                 )}
             >
                 {preview ? (

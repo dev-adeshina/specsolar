@@ -2,13 +2,14 @@
 
 use App\Http\Controllers\AdminSettings\ProfileController;
 use App\Http\Controllers\AdminSettings\SecurityController;
+use App\Http\Controllers\Staff\Actions\Catalog\BrandController;
 use App\Http\Controllers\Staff\DepartmentController;
 use App\Http\Controllers\Staff\CatalogController;
 use App\Http\Controllers\Staff\Actions\Catalog\CategoryController;
+use App\Http\Controllers\Staff\Actions\Catalog\ProductController;
 use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Auth\Middleware\portal;
-
 
 
 
@@ -42,6 +43,12 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
             Route::get('product-variant', [CatalogController::class, 'productVariant'])->name('catalog.product-variant');
                 Route::prefix('categories')->group(function () {
                     Route::post('create', [CategoryController::class, 'store'])->name('categories.create');
+                });
+                Route::prefix('brands')->group(function () {
+                    Route::post('create', [BrandController::class, 'store'])->name('brands.create');
+                });
+                Route::prefix('products')->group(function () {
+                    Route::post('create', [ProductController::class, 'store'])->name('products.create');
                 });
         });
     });

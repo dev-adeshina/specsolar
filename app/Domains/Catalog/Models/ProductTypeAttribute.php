@@ -4,7 +4,7 @@ namespace App\Domains\Catalog\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class ProductTypeAttribute extends Model
 {
@@ -26,13 +26,13 @@ class ProductTypeAttribute extends Model
         ];
     }
 
-    public function producttype(): HasMany
+    public function producttype(): BelongsTo
     {
-        return $this->hasMany(ProductType::class);
+        return $this->belongsTo(ProductType::class);
     }
 
-    public function attribute(): HasMany
+    public function attribute(): BelongsTo
     {
-        return $this->hasMany(Attribute::class);
+        return $this->belongsTo(Attribute::class);
     }
 }
