@@ -34,3 +34,30 @@ function categorizeByDevice( products: Product[])
     }, {} as Record<string, { id: number; name: string; price: number }[]>);
     
 }
+
+
+
+    const numbers = [4, 9, 6, 5, 10];
+    const target = 11;
+
+
+    function twoSum(numbers: number[], target: number): number[]
+    {
+        let result: number[] | number | any;
+        let i;
+        let b;
+        for(i = 0; numbers.length; i++) {
+            if(numbers[i] === target) {
+                result = [numbers[i]]
+            }else {
+                for(b =0; numbers.length; b++){
+                    if(numbers[b]) {
+
+                    }
+                }
+            }
+        }
+
+
+        return result;
+    }

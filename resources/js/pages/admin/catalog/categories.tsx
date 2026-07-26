@@ -159,186 +159,186 @@ export default function Categories() {
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
                 <div className="grid auto-rows-min gap-8 md:grid-cols-8">
                     <div className="relative col-span-3 overflow-hidden  p-5 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                        <Form {
-                            ...store.form()}
-                            resetOnSuccess={['name', 'slug', 'description', 'image', 'icon', 'status']}
-                            disableWhileProcessing
-                            className="flex flex-col gap-6"
-                        >
-                            {({ processing, errors }) => (
-                                <>
-                                    <div className="grid gap-6">
-                                        <div className="grid gap-2">
-                                            <Label htmlFor="parent_id">Parent</Label>
-                                            <Select name="parent_id">
-                                                <SelectTrigger className="w-full">
-                                                    <SelectValue placeholder="Select a parent" />
-                                                </SelectTrigger>
-                                                <SelectContent>
-                                                    {categories?.map((category) => (
-                                                        <SelectItem
-                                                            key={category.id}
-                                                            value={String(category.id)}
-                                                        >
-                                                            {category?.name}
-                                                        </SelectItem>
-                                                    ))}
-                                                </SelectContent>
-                                            </Select>
-                                            <InputError
-                                                message={errors.paranet_id}
-                                                className="mt-2"
-                                            />
-                                        </div>
+                                <Form {
+                                    ...store.form()}
+                                    resetOnSuccess={['name', 'slug', 'description', 'image', 'icon', 'status']}
+                                    disableWhileProcessing
+                                    className="flex flex-col gap-6"
+                                >
+                                    {({ processing, errors }) => (
+                                        <>
+                                            <div className="grid gap-6 md:grid-cols-2">
+                                                <div className="grid gap-2">
+                                                    <Label htmlFor="parent_id">Parent</Label>
+                                                    <Select name="parent_id">
+                                                        <SelectTrigger className="w-full">
+                                                            <SelectValue placeholder="Select a parent" />
+                                                        </SelectTrigger>
+                                                        <SelectContent>
+                                                            {categories?.map((category) => (
+                                                                <SelectItem
+                                                                    key={category.id}
+                                                                    value={String(category.id)}
+                                                                >
+                                                                    {category?.name}
+                                                                </SelectItem>
+                                                            ))}
+                                                        </SelectContent>
+                                                    </Select>
+                                                    <InputError
+                                                        message={errors.paranet_id}
+                                                        className="mt-2"
+                                                    />
+                                                </div>
 
 
-                                        <div className="grid gap-2">
-                                            <Label htmlFor="name">Category Name</Label>
-                                            <Input
-                                                id="name"
-                                                type="text"
-                                                required
-                                                autoFocus
-                                                tabIndex={1}
-                                                autoComplete="name"
-                                                name="name"
-                                                placeholder="Category name"
-                                            />
-                                            <InputError
-                                                message={errors.name}
-                                                className="mt-2"
-                                            />
-                                        </div>
+                                                <div className="grid gap-2">
+                                                    <Label htmlFor="name">Category Name</Label>
+                                                    <Input
+                                                        id="name"
+                                                        type="text"
+                                                        required
+                                                        autoFocus
+                                                        tabIndex={1}
+                                                        autoComplete="name"
+                                                        name="name"
+                                                        placeholder="Category name"
+                                                    />
+                                                    <InputError
+                                                        message={errors.name}
+                                                        className="mt-2"
+                                                    />
+                                                </div>
 
-                                        <div className="grid gap-2">
-                                            <Label htmlFor="slug">slug</Label>
-                                            <Input
-                                                id="slug"
-                                                type="text"
-                                                required
-                                                autoFocus
-                                                tabIndex={1}
-                                                autoComplete="slug"
-                                                name="slug"
-                                                placeholder="Slug"
-                                            />
-                                            <InputError
-                                                message={errors.slug}
-                                                className="mt-2"
-                                            />
-                                        </div>
+                                                <div className="grid gap-2">
+                                                    <Label htmlFor="slug">slug</Label>
+                                                    <Input
+                                                        id="slug"
+                                                        type="text"
+                                                        required
+                                                        autoFocus
+                                                        tabIndex={1}
+                                                        autoComplete="slug"
+                                                        name="slug"
+                                                        placeholder="Slug"
+                                                    />
+                                                    <InputError
+                                                        message={errors.slug}
+                                                        className="mt-2"
+                                                    />
+                                                </div>
 
-                                        <div className="grid gap-2">
-                                            <Label htmlFor="description">description</Label>
-                                            <TextArea
-                                                id="description"
-                                                rows={8}
-                                                cols={6}
-                                                required
-                                                autoFocus
-                                                tabIndex={1}
-                                                autoComplete="description"
-                                                name="description"
-                                                placeholder="Description"
-                                            />
-                                            <InputError
-                                                message={errors.description}
-                                                className="mt-2"
-                                            />
-                                        </div>
+                                                <div className="grid gap-2">
+                                                    <Label htmlFor="description">description</Label>
+                                                    <TextArea
+                                                        id="description"
+                                                        rows={8}
+                                                        cols={6}
+                                                        required
+                                                        autoFocus
+                                                        tabIndex={1}
+                                                        autoComplete="description"
+                                                        name="description"
+                                                        placeholder="Description"
+                                                    />
+                                                    <InputError
+                                                        message={errors.description}
+                                                        className="mt-2"
+                                                    />
+                                                </div>
 
-                                        <div className="grid gap-2">
-                                            <Label htmlFor="icon">icon</Label>
-                                            <Select name="icon">
-                                                <SelectTrigger className="w-full">
-                                                    <SelectValue placeholder="Select an icon" />
-                                                </SelectTrigger>
-                                                <SelectContent>
-                                                    {ICONS.map(({ name, Icon }) => (
-                                                        <SelectItem
-                                                            key={name}
-                                                            value={name}
-                                                        >
-                                                            <div className="flex items-center gap-2">
-                                                                <Icon className="size-4" />
-                                                                <span>{name}</span>
-                                                            </div>
-                                                        </SelectItem>
-                                                    ))}
-                                                </SelectContent>
-                                            </Select>
-                                            <InputError
-                                                message={errors.paranet_id}
-                                                className="mt-2"
-                                            />
-                                            <InputError
-                                                message={errors.name}
-                                                className="mt-2"
-                                            />
-                                        </div>
+                                                <div className="grid gap-2">
+                                                    <Label htmlFor="icon">icon</Label>
+                                                    <Select name="icon">
+                                                        <SelectTrigger className="w-full">
+                                                            <SelectValue placeholder="Select an icon" />
+                                                        </SelectTrigger>
+                                                        <SelectContent>
+                                                            {ICONS.map(({ name, Icon }) => (
+                                                                <SelectItem
+                                                                    key={name}
+                                                                    value={name}
+                                                                >
+                                                                    <div className="flex items-center gap-2">
+                                                                        <Icon className="size-4" />
+                                                                        <span>{name}</span>
+                                                                    </div>
+                                                                </SelectItem>
+                                                            ))}
+                                                        </SelectContent>
+                                                    </Select>
+                                                    <InputError
+                                                        message={errors.paranet_id}
+                                                        className="mt-2"
+                                                    />
+                                                    <InputError
+                                                        message={errors.name}
+                                                        className="mt-2"
+                                                    />
+                                                </div>
 
-                                        <div className="grid gap-2">
-                                            <Label htmlFor="icon">Status</Label>
-                                            <Select name="status">
-                                                <SelectTrigger className="w-full">
-                                                    <SelectValue placeholder="Select Status" />
-                                                </SelectTrigger>
-                                                <SelectContent>
-                                                    {STATUS.map(({ name }) => (
-                                                        <SelectItem
-                                                            key={name}
-                                                            value={name}
-                                                        >
-                                                            <div className="flex items-center gap-2">
-                                                                
-                                                                <span>{name}</span>
-                                                            </div>
-                                                        </SelectItem>
-                                                    ))}
-                                                </SelectContent>
-                                            </Select>
-                                            <InputError
-                                                message={errors.paranet_id}
-                                                className="mt-2"
-                                            />
-                                            <InputError
-                                                message={errors.name}
-                                                className="mt-2"
-                                            />
-                                        </div>
+                                                <div className="grid gap-2">
+                                                    <Label htmlFor="icon">Status</Label>
+                                                    <Select name="status">
+                                                        <SelectTrigger className="w-full">
+                                                            <SelectValue placeholder="Select Status" />
+                                                        </SelectTrigger>
+                                                        <SelectContent>
+                                                            {STATUS.map(({ name }) => (
+                                                                <SelectItem
+                                                                    key={name}
+                                                                    value={name}
+                                                                >
+                                                                    <div className="flex items-center gap-2">
+                                                                        
+                                                                        <span>{name}</span>
+                                                                    </div>
+                                                                </SelectItem>
+                                                            ))}
+                                                        </SelectContent>
+                                                    </Select>
+                                                    <InputError
+                                                        message={errors.paranet_id}
+                                                        className="mt-2"
+                                                    />
+                                                    <InputError
+                                                        message={errors.name}
+                                                        className="mt-2"
+                                                    />
+                                                </div>
 
-                                        <div className="grid gap-2">
-                                            <Label htmlFor="image">Image</Label>
-                                            <ImageUpload 
-                                                name="image" 
-                                                required
-                                                accept=".jpg,.jpeg,.png,.webp"
-                                                className="h-48 w-full" 
-                                            />
-                                            <InputError
-                                                message={errors.image}
-                                                className="mt-2"
-                                            />
-                                        </div>
+                                                <div className="grid gap-2">
+                                                    <Label htmlFor="image">Image</Label>
+                                                    <ImageUpload 
+                                                        name="image" 
+                                                        required
+                                                        accept=".jpg,.jpeg,.png,.webp"
+                                                        className="h-48 w-full" 
+                                                    />
+                                                    <InputError
+                                                        message={errors.image}
+                                                        className="mt-2"
+                                                    />
+                                                </div>
 
-                                        
+                                                
 
-                                        
+                                                
 
 
-                                        <Button
-                                            type="submit"
-                                            className="mt-2 w-full"
-                                            tabIndex={5}
-                                            data-test="register-user-button"
-                                        >
-                                            {processing && <Spinner />}
-                                            Create Category 
-                                        </Button>
-                                    </div>
-                                </>
-                            )}
-                        </Form>
+                                                <Button
+                                                    type="submit"
+                                                    className="mt-2 w-full"
+                                                    tabIndex={5}
+                                                    data-test="register-user-button"
+                                                >
+                                                    {processing && <Spinner />}
+                                                    Create Category 
+                                                </Button>
+                                            </div>
+                                        </>
+                                    )}
+                                </Form>
                     </div>
                     <div className="relative col-span-5 overflow-hidden  p-5 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
                         

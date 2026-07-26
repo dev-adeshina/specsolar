@@ -46,3 +46,24 @@ export interface Category {
     created_at: string;
     updated_at: string;
 }
+
+
+export interface Brand {
+    id: number;
+
+    name: string;
+    slug: string;
+
+    logo: string | null;
+
+    website: string | null;
+
+    country: string | null;
+
+    description: string | null;
+
+    status: boolean;
+
+    created_at: string;
+    updated_at: string;
+}

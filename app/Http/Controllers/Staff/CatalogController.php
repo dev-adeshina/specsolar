@@ -66,7 +66,7 @@ class CatalogController extends Controller
 
     public function product()
     {
-        return Inertia::render('admin/catalog/product', ['product' => Product::all()]);
+        return Inertia::render('admin/catalog/product', ['products' => Product::all(), 'brands' => Brand::all(), 'categories' => Category::all()]);
     }
 
     public function productVariant()
