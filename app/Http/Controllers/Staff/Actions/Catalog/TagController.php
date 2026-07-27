@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    public function store(){}
+    public function store(){
+        return to_route('catalog.tag');
+    }
 
     public function update(){}
 

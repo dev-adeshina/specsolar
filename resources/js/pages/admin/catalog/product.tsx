@@ -2,7 +2,7 @@ import { Head } from '@inertiajs/react';
 import { admin_dashboard } from '@/routes';
 import { categories,  product } from '@/routes/catalog/';
 import { usePage } from '@inertiajs/react';
-import type { Category, Brand } from "@/types/admin";
+import type { Category, Brand, ProductType } from "@/types/admin";
 import {
     FormTabs,
     FormTabList,
@@ -22,10 +22,11 @@ const styling = "px-4 py-3 text-sm font-medium data-[state=active]:border-b-2 da
 type PageProps = {
     categories: Category[];
     brands: Brand[]
+    productTypes: ProductType[]
 }
 
 export default function Product(){
-const { categories, brands } = usePage<PageProps>().props;
+const { categories, brands, productTypes } = usePage<PageProps>().props;
     return (
         <>
             <Head title="Product" />
@@ -61,7 +62,7 @@ const { categories, brands } = usePage<PageProps>().props;
                             </FormTabList>
 
                             <FormTabContent value="general">
-                                <ProductGeneralForm  categories={categories} brands={brands} productTypes={[]} />
+                                <ProductGeneralForm  categories={categories} brands={brands} productTypes={productTypes} />
                             </FormTabContent>
 
                             <FormTabContent value="pricing">

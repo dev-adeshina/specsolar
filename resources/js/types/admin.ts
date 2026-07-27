@@ -67,3 +67,19 @@ export interface Brand {
     created_at: string;
     updated_at: string;
 }
+
+
+export interface ProductType {
+    id: number;
+    name: string;
+    slug: string;
+    description: string;
+
+}
+
+
+export interface AttributeGroup {
+    id: number;
+    name: string;
+    sort_order: number;
+}

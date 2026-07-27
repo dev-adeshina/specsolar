@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 class ProductVariantController extends Controller
 {
-    public function store(){}
+    public function store(){
+        return to_route('catalog.product-variant');
+    }
 
     public function update(){}
 

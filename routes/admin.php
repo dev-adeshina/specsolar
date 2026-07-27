@@ -2,14 +2,21 @@
 
 use App\Http\Controllers\AdminSettings\ProfileController;
 use App\Http\Controllers\AdminSettings\SecurityController;
+use App\Http\Controllers\Staff\Actions\Catalog\AttributeController;
+use App\Http\Controllers\Staff\Actions\Catalog\AttributeGroupController;
 use App\Http\Controllers\Staff\Actions\Catalog\BrandController;
 use App\Http\Controllers\Staff\DepartmentController;
 use App\Http\Controllers\Staff\CatalogController;
 use App\Http\Controllers\Staff\Actions\Catalog\CategoryController;
 use App\Http\Controllers\Staff\Actions\Catalog\ProductController;
+use App\Http\Controllers\Staff\Actions\Catalog\ProductTypeAttributeController;
+use App\Http\Controllers\Staff\Actions\Catalog\ProductTypeController;
+use App\Http\Controllers\Staff\Actions\Catalog\ProductVariantController;
+use App\Http\Controllers\Staff\Actions\Catalog\TagController;
 use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Auth\Middleware\portal;
+
 
 
 
@@ -41,14 +48,41 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
             Route::get('warehouse', [CatalogController::class, 'warehouse'])->name('catalog.warehouse');
             Route::get('product', [CatalogController::class, 'product'])->name('catalog.product');
             Route::get('product-variant', [CatalogController::class, 'productVariant'])->name('catalog.product-variant');
+
                 Route::prefix('categories')->group(function () {
                     Route::post('create', [CategoryController::class, 'store'])->name('categories.create');
                 });
+
                 Route::prefix('brands')->group(function () {
                     Route::post('create', [BrandController::class, 'store'])->name('brands.create');
                 });
+
                 Route::prefix('products')->group(function () {
                     Route::post('create', [ProductController::class, 'store'])->name('products.create');
+                });
+
+                Route::prefix('attribute-group')->group(function () {
+                    Route::post('create', [AttributeGroupController::class, 'store'])->name('attribute-group.create');
+                });
+
+                Route::prefix('attribute')->group(function () {
+                    Route::post('create', [AttributeController::class, 'store'])->name('attribute.create');
+                });
+
+                Route::prefix('product-type')->group(function () {
+                    Route::post('create', [ProductTypeController::class, 'store'])->name('product-type.create');
+                });
+
+                Route::prefix('product-type-attribute')->group(function () {
+                    Route::post('create', [ProductTypeAttributeController::class, 'store'])->name('product-type-attribute.create');
+                });
+
+                Route::prefix('product-variant')->group(function () {
+                    Route::post('create', [ProductVariantController::class, 'store'])->name('product-variant.create');
+                });
+
+                Route::prefix('tag')->group(function () {
+                    Route::post('create', [TagController::class, 'store'])->name('tag.create');
                 });
         });
     });

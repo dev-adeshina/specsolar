@@ -45,7 +45,7 @@ class CatalogController extends Controller
 
     public function attribute() 
     {
-        return Inertia::render('admin/catalog/attribute', ['attribute' => Attribute::all()]);
+        return Inertia::render('admin/catalog/attribute', ['attribute' => Attribute::all(), 'attributeGroups' => AttributeGroup::all()]);
     }
 
     public function productTypeAttribute()
@@ -66,7 +66,7 @@ class CatalogController extends Controller
 
     public function product()
     {
-        return Inertia::render('admin/catalog/product', ['products' => Product::all(), 'brands' => Brand::all(), 'categories' => Category::all()]);
+        return Inertia::render('admin/catalog/product', ['products' => Product::all(), 'brands' => Brand::all(), 'categories' => Category::all(), 'productTypes' => ProductType::all()]);
     }
 
     public function productVariant()
