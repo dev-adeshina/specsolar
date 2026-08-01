@@ -17,6 +17,6 @@ class ProductRelationship extends Model
 
     public function product(): BelongsTo
     {
-        return $this->hasMany(Product::class);
+        return $this->BelongsTo(Product::class);
     }
 }

@@ -8,10 +8,14 @@ use App\Http\Controllers\Staff\Actions\Catalog\BrandController;
 use App\Http\Controllers\Staff\DepartmentController;
 use App\Http\Controllers\Staff\CatalogController;
 use App\Http\Controllers\Staff\Actions\Catalog\CategoryController;
+use App\Http\Controllers\Staff\Actions\Catalog\InventoryController;
 use App\Http\Controllers\Staff\Actions\Catalog\ProductController;
+use App\Http\Controllers\Staff\Actions\Catalog\ProductImageController;
+use App\Http\Controllers\Staff\Actions\Catalog\ProductPriceController;
 use App\Http\Controllers\Staff\Actions\Catalog\ProductTypeAttributeController;
 use App\Http\Controllers\Staff\Actions\Catalog\ProductTypeController;
 use App\Http\Controllers\Staff\Actions\Catalog\ProductVariantController;
+use App\Http\Controllers\Staff\Actions\Catalog\SeoController;
 use App\Http\Controllers\Staff\Actions\Catalog\TagController;
 use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Support\Facades\Route;
@@ -46,7 +50,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
             Route::get('product-type-attribute', [CatalogController::class, 'productTypeAttribute'])->name('catalog.product-type-attribute');
             Route::get('tag', [CatalogController::class, 'tag'])->name('catalog.tag');
             Route::get('warehouse', [CatalogController::class, 'warehouse'])->name('catalog.warehouse');
-            Route::get('product', [CatalogController::class, 'product'])->name('catalog.product');
+            Route::get('products', [CatalogController::class, 'product'])->name('catalog.product');
             Route::get('product-variant', [CatalogController::class, 'productVariant'])->name('catalog.product-variant');
 
                 Route::prefix('categories')->group(function () {
@@ -57,9 +61,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
                     Route::post('create', [BrandController::class, 'store'])->name('brands.create');
                 });
 
-                Route::prefix('products')->group(function () {
-                    Route::post('create', [ProductController::class, 'store'])->name('products.create');
-                });
+                
 
                 Route::prefix('attribute-group')->group(function () {
                     Route::post('create', [AttributeGroupController::class, 'store'])->name('attribute-group.create');
@@ -83,6 +85,26 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
                 Route::prefix('tag')->group(function () {
                     Route::post('create', [TagController::class, 'store'])->name('tag.create');
+                });
+
+                Route::prefix('products')->group(function () {
+                    Route::post('create', [ProductController::class, 'store'])->name('products.create');
+
+                    Route::prefix('price')->group(function () {
+                        Route::post('create', [ProductPriceController::class, 'store'])->name('price.store');
+                    });
+
+                    Route::prefix('inventory')->group(function () {
+                        Route::post('create', [InventoryController::class, 'store'])->name('inventory.store');
+                    });
+
+                    Route::prefix('images')->group(function () {
+                        Route::post('create', [ProductImageController::class, 'store'])->name('image.store');
+                    });
+
+                    Route::prefix('seo')->group(function () {
+                        Route::post('create', [SeoController::class, 'store'])->name('seo.store');
+                    });
                 });
         });
     });

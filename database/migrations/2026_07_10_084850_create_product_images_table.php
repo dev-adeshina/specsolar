@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('product_images', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
-            $table->foreignId('product_variant_id')->nullable()->constrained('product_variants')->nullOnDelete();
+            // $table->foreignId('product_variant_id')->nullable()->constrained('product_variants')->nullOnDelete();
             $table->string('image')->nullable();
             $table->string('alt')->nullable();
             $table->boolean('is_primary')->default(false);

@@ -39,48 +39,12 @@ interface Props {
 
 import { Card, Flex, Heading, Text } from "@radix-ui/themes";
 
-export default function ProductGeneralForm({
-    categories,
-    brands,
-    productTypes,
-    }: Props) {
-
-
-        console.log({categories, brands, productTypes});
+export default function ProductGeneralForm({ categories, brands, productTypes }: Props) {
   
     return (
         <Card>
             <Flex direction="column" gap="4">
                 
-
-
-
-                {/*
-
-                Category
-                Brand
-                Product Type
-
-                Name
-                Slug
-                SKU
-                Barcode
-
-                Short Description
-                Description
-
-                Weight
-                Length
-                Width
-                Height
-
-                Status
-                Visibility
-                Featured
-                Service
-
-                */}
-
 
                 <Form
                     {...store.form()}

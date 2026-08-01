@@ -94,4 +94,9 @@ class Product extends Model
     {
         return $this->hasMany(ProductReview::class);
     }
+
+    public function seo(): HasOne
+    {
+        return $this->hasOne(Seo::class);
+    }
 }

@@ -10,7 +10,7 @@ class ProductPrice extends Model
     //
 
     protected $fillable = [
-        'product_variant_id',
+        'product_id',
         'currency',
         'price_type',
         'amount',

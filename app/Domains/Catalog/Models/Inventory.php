@@ -12,8 +12,8 @@ class Inventory extends Model
 
 
     protected $fillable = [
-        'warehouse_id',
-        'product_variant_id',
+        // 'warehouse_id',
+        'product_id',
         'quantity',
         'reserved',
         'minimum_stock',
@@ -30,6 +30,10 @@ class Inventory extends Model
         ];
     }
 
+    public function product(): BelongsTo 
+    {
+        return $this->belongsTo(Product::class);
+    }
 
     public function variantattributevalue(): BelongsTo
     {

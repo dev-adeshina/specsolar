@@ -5,6 +5,7 @@ namespace App\Http\Requests\Catalog;
 use App\Domains\Catalog\DTOs\ProductDTO;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
 
 
 class StoreProductRequest extends FormRequest
@@ -42,10 +43,10 @@ class StoreProductRequest extends FormRequest
             'width' => ['nullable', 'numeric'],
             'height' => ['nullable', 'numeric'],
 
-            'status' => ['required'],
-            'visibility' => ['required'],
-            'is_featured' => ['required'],
-            'is_service' => ['required'],
+            'status' =>      ['required', 'string', 'in:active,draft,inactive'],
+            'visibility' =>  ['required', 'string', 'in:public,private'],
+            'is_featured' => ['nullable', 'boolean'],
+            'is_service' =>  ['nullable', 'boolean'],
         ];
     }
 
@@ -63,8 +64,8 @@ class StoreProductRequest extends FormRequest
             short_description: $this->string('short_description')->value(),
             description: $this->string('description')->value(),
 
-            status: $this->boolean('status'),
-            visibility: $this->boolean('visibility'),
+            status: $this->string('status')->value(),
+            visibility: $this->string('visibility')->value(),
 
             is_featured: $this->boolean('is_featured'),
             is_service: $this->boolean('is_service'),

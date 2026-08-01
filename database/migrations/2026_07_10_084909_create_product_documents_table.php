@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->string('title');
             $table->string('document_type');
-            $table->string('fifile_pathle');
+            $table->string('file_path');
             $table->timestamps();
         });
     }

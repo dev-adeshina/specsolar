@@ -17,8 +17,8 @@ class ProductDTO
         public readonly ?string $short_description,
         public readonly ?string $description,
 
-        public readonly ?bool $status,
-        public readonly ?bool $visibility,
+        public readonly ?string $status,
+        public readonly ?string $visibility,
 
         public readonly ?bool $is_featured,
         public readonly ?bool $is_service,

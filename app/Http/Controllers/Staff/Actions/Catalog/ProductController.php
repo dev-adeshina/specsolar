@@ -6,12 +6,14 @@ use App\Domains\Catalog\Services\ProductService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Catalog\StoreProductRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 
 
 class ProductController extends Controller
 {
+    
     public function __construct(protected ProductService $service){}
 
     public function store(StoreProductRequest $request)
@@ -23,7 +25,7 @@ class ProductController extends Controller
             'message' => __('Product created successfully.'),
         ]);
 
-        return to_route('catalog.products');
+        return to_route('catalog.product');
     }
 
     public function update(){}
